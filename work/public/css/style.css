@@ -7,9 +7,8 @@ main {
   margin: 32px auto;
 }
 
-header{
+header {
   display: flex;
-  justify-content: space-between;
 }
 
 h1 {
@@ -36,7 +35,7 @@ li {
   margin-bottom: 8px;
 }
 
-.done {
+input[type="checkbox"]:checked+span {
   text-decoration: line-through;
   color: #ccc;
 }
@@ -50,9 +49,6 @@ input[type="checkbox"] {
   color: #ccc;
   cursor: pointer;
   font-size: 14px;
-}
-
-.delete-form{
   margin-left: auto;
   padding-left: 8px;
 }
