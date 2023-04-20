@@ -24,7 +24,9 @@ class Todo
                     echo json_encode(['id' => $id]);
                     break;
                 case 'toggle':
-                    $this->toggle();
+                    $is_done = $this->toggle();
+                    header('Content-Type: application/json');
+                    echo json_encode(['is_done' => $is_done]);
                     break;
                 case 'delete':
                     $this->delete();
@@ -76,6 +78,8 @@ class Todo
         $stmt = $this->pdo->prepare("UPDATE todos SET is_done = NOT is_done WHERE id = :id");
         $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
         $stmt-> execute();
+
+        return (bool) !$todo->is_done;
     }
 
     private function delete()
