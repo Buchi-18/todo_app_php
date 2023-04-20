@@ -20,6 +20,14 @@
           if (!res.ok) {
             throw new Error("This todo has been deleted!");
           }
+
+          return res.json();
+        })
+        .then((json) => {
+          if (json.is_done !== e.target.checked) {
+            alert("This todo has been updated. UI is being updated.");
+          }
+          e.target.checked = json.is_done;
         })
         .catch((err) => {
           alert(err.message);
